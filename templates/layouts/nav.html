@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">Эрдэм шинжилгээ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Нүүр <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'creation_list' %}">Бүтээлүүд </a>
+            </li>
+
+            {% if request.user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'download_report' %}">Тайлан татах</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'creation_new' %}" class="nav-link">Бүтээл нэмэх</a>
+            </li>
+            {% endif %}
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a href="" class="nav-link">{{ user.username }}</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Гарах</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Нэвтрэх</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Бүртгүүлэх</a></li>
+            {% endif %}
+
+
+        </ul>
+
+    </div>
+</nav>

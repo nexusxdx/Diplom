@@ -1,0 +1,82 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} {{ author.get_full_name }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-sm-9">
+            <div class="row">
+                <div class="col-md-5" style="text-align: center">
+                    <img src="/media/{{ author.image }}" width="348" height="348">
+                </div>
+
+                <div class="col-md-7">
+                    <div class="profile-bio">
+                        <h2>{{ author.get_full_name | capfirst }}</h2>
+
+                        {% if author.get_author_status %}
+                        <p>{{ author.profession }}</p>
+                        <p><strong>Төгссөн сургууль:</strong> {{ author.graduated_school }}</p>
+                        <p><strong>Зэрэг цол авсан сургууль: </strong> {{ author.graduated_school }}</p>
+                        <p><strong>Одоо эрхлэж буй ажил албан тушаал:</strong> {{ author.rank }}</p>
+                        <hr style="margin: 10px 0">
+                        <p>{{ author.about }}</p>
+                        <p><strong>Бүтээлийн тоо: {{ author.creations.count }}</strong></p>
+                        <p><strong>Бүтээлүүдийг үзсэн: {{ creation_views }} </strong></p>
+                        <p><strong>Бүтээлүүдийг татаж авсан: {{ creation_downloads }}</strong></p>
+                        <p><strong>Профайл үзсэн: {{ views }} </strong></p>
+                        {% else %}
+                        <p>Мэдээлэл хоосон байна.</p>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    {% if author.creations.all %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 style="margin: 20px">
+                <i class="fa fa-pencil"></i>
+                Бүтээлүүд
+            </h3>
+            <table class="table dataTable no-footer">
+                <thead class="thead-light">
+                <tr>
+                    <th>№</th>
+                    <th>Бүтээлийн нэр</th>
+                    <th>Бүтээлийн төрөл</th>
+                    <th>Үнэ</th>
+                    <th>Огноо</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for creation in author.creations.all %}
+                <tr>
+                    <td class="sorting_1"></td>
+                    <td><a href="{% url 'creation_detail' creation.id %}">{{ creation.title }}</a></td>
+                    <td>{{ creation.type }}</td>
+                    {% if creation.is_paid %}
+                    <td><span class="badge badge-success">{{ creation.price }} </span>
+                        {% else %}
+                    <td><span class="badge badge-success">Үнэгүй</span></td>
+                    {% endif %}
+                    <td>{{ creation.uploaded_date }}</td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

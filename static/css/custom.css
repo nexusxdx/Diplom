@@ -1,0 +1,181 @@
+body {
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Open Sans",Sans-Serif;
+}
+
+h4 {
+    font-size: 20px;
+
+}
+
+h5 {
+    font-size: 17px;
+}
+
+.container, .container-fluid {
+    padding-top: 70px;
+}
+
+/*Payment Section*/
+.maintain {
+    padding-bottom: 50px;
+    background-color: #fafafa;
+}
+
+
+.payment-wrap {
+	padding: 30px 42px;
+}
+
+.sub-heading {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.sub-heading:after {
+    width: 100%;
+    content: '';
+    height: 1px;
+    left: 0;
+    top: 12px;
+    background: #00359b;
+    position: absolute;
+    z-index: 1;
+}
+
+.sub-heading h4 {
+    background-color: #fff;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    padding-right: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00359d;
+}
+
+.sub-card-total {
+    padding: 25px 0;
+    margin: 0 0 15px 0;
+}
+
+.section-payment {
+    margin-right: 55px;
+    margin-left: 55px;
+    width: auto%;
+    background-color: #fff;
+    height: 700px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+.headline {
+    margin-bottom: 20px;
+}
+
+.headline h3 {
+    border-bottom: 2px solid #015432;
+    margin: 0 0 -2px 0;
+    padding-bottom: 5px;
+    display: inline-block
+}
+
+.badge {
+    font-size: 11px;
+    padding: 7px;
+}
+
+.dataTable {
+    counter-reset: rowNumber;
+}
+
+.dataTable tr {
+    counter-increment: rowNumber;
+}
+
+.dataTable tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+
+.profile-bio {
+	font-size: 14px;
+	margin-left: 20px;
+    margin-top: 20px;
+}
+
+.dissertation_text {
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3277ae;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.author-section {
+    margin-left: 20px;
+    padding: 20px 30px;
+    border-top: 2px solid blue;
+}
+
+.table-prefix {
+	background-color: #015432;
+	border-top: 2px solid blue;
+}
+
+.grid-info {
+	color: white;
+	height: 300px;
+	background: white;
+	display: grid;
+	width: auto;
+	margin: auto;
+	grid-template-columns: auto auto auto;
+}
+
+.item {
+	background: #e3e3e3;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.fa {
+	margin: 0 auto;
+}
+
+.item-active {
+	background: #3277AE;
+}
+
+.iconfilter {
+	display: block;
+	text-align: center;
+	font-size: 30px;
+
+}
+
+.iconfilter-text {
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+}
+
+.tag-box-6 {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+}
+
+.tag-box {
+    margin-top: 20px;
+
+    padding: 20px;
+}
+
+.query_table td {
+    margin-left: 20px;
+}

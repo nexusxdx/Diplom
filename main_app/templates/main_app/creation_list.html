@@ -1,0 +1,85 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Бүтээлүүд {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-sm-9">
+            <div class="headline">
+                <h3>Бүтээлүүд</h3>
+            </div>
+
+            <form action="" method="get">
+                <div class="form-row">
+                    <div class="col-9">
+                        <input type="text" name="query" class="form-control" placeholder="Хайх зүйлээ бичнэ үү...">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-success"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            {% if request.GET.query %}
+            <div class="tag-box tag-box-6">
+                <table width="100%">
+                    <tr>
+                        <td width="18%"><strong style="font-weight: bold;">Хайсан үг:</strong></td>
+                        <td>{{ query }}</td>
+                    </tr>
+                    <tr>
+                        <td width="18%"><strong style="font-weight: bold;">Бүтээлийн тоо:</strong></td>
+                        <td>{{ query_count }}</td>
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if object_list %}
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table dataTable no-footer" style="margin-top: 20px;">
+                        <thead class="thead-light">
+                        <tr>
+                            <th style="width: 2%">№</th>
+                            <th style="width: 16.66%">Зохиолч</th>
+                            <th style="width: 40%">Бүтээлийн нэр</th>
+                            <th style="width: 21%">Бүтээлийн төрөл</th>
+                            <th style="width: 5%">Үнэ</th>
+                            <th style="width: 20%">Огноо</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for creation in object_list %}
+                        <tr>
+                            <td class="sorting_1"></td>
+                            <td>{{ creation.author.get_short_name }}</td>
+                            <td><a href="{% url 'creation_detail' creation.id %}">{{ creation.title }}</a></td>
+                            <td>{{ creation.type }}</td>
+                            {% if creation.is_paid %}
+                            <td><span class="badge badge-success">{{ creation.price }} </span>
+                                {% else %}
+                            <td><span class="badge badge-success">Үнэгүй</span></td>
+                            {% endif %}
+                            <td>{{ creation.uploaded_date }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% else %}
+
+            <p>Одоогоор бүтээл бүртгэгдээгүй байна.</p>
+
+            {% endif %}
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

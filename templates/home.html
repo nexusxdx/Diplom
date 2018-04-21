@@ -1,0 +1,77 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Нүүр хуудас {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover" style="border-top:2px solid #015432;">
+                <tbody>
+
+                <form method="get" action="">
+                    <tr>
+                        <td>Эрдэмтний нэр:</td>
+                        <td><input type="text" name="l" class="form-control mb-2 mr-sm-2 mb-sm-0 input_field"
+                                   value="{{ request.GET.l }}"/>
+                        </td>
+                        <td>Овог:</td>
+                        <td><input id="search_ovog" name="f" class="form-control mb-2 mr-sm-2 mb-sm-0 input_field"
+                                   value="{{ request.GET.f }}"/></td>
+                        <td><input type="submit" value="Хайх" class="btnsearch btn btn-success"></td>
+                    </tr>
+                    <tr>
+                        <td>Мэргэжил:</td>
+                        <td><input name="p" class="form-control mb-2 mr-sm-2 mb-sm-0 input_field"
+                                   value="{{ request.GET.p }}"/></td>
+                        <td>Албан тушаал</td>
+                        <td>
+                            <input type="text" name="r" class="form-control mb-2 mr-sm-2 mb-sm-0 input_field"
+                                   value="{{ request.GET.r }}">
+                        </td>
+                        <td><a href="/" class="btn btn-success" id="btn-clear">Цэвэрлэх</a></td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+
+            <table class="table table-striped table-bordered table-hover" style="border-top:2px solid #015432;">
+                <thead>
+                <tr>
+                    <th class="sort" data-sort="dn">Эрдэмтний нэр</th>
+                    <th>Мэргэжил</th>
+                    <th>Албан тушаал</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                {% for author in object_list %}
+                <tr id="author-list">
+                    <td><a href="{% url 'profile' author.id %}">
+                        {{ author.get_short_name }}</a>
+                    </td>
+
+                    {% if not author.profession and not author.rank %}
+                    <td>Хоосон байна.</td>
+                    <td>Хоосон байна.</td>
+                    {% else %}
+                    <td>{{ author.profession }}</td>
+                    <td>{{ author.rank }}</td>
+                    {% endif %}
+
+                </tr>
+                {% empty %}
+                <p>Үр дүн олдсонгүй.</p>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Тайлан {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="headline">
+                <h3>Тайлан татах</h3>
+            </div>
+            {% crispy form %}
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

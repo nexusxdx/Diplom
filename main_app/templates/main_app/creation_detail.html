@@ -1,0 +1,94 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} {{ object.title }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <table class="table table-bordered" style="font-size: 13px;">
+                <tbody>
+                <tr>
+                    <th width="200px">Бүтээлийн нэр</th>
+                    <td>{{ object.title }}</td>
+                </tr>
+                <tr>
+                    <th>Зохиогч</th>
+                    <td><a href="{% url 'profile' object.author.id %}">
+                        {{ object.author.first_name|slice:"1" }}. {{ object.author.last_name }}</a></td>
+                </tr>
+                <tr>
+                    <th>Хамтран зохиогчид</th>
+                    <td>{{ object.co_authors }}</td>
+                </tr>
+                <tr>
+                    <th>Бүтээлийн хэлбэр</th>
+                    <td>{{ object.type }}</td>
+                </tr>
+                <tr>
+                    <th>Бүтээлийн ангилал</th>
+                    <td>{{ object.category }}</td>
+                </tr>
+                <tr>
+                    <th>Бүтээлийн дэд ангилал</th>
+                    <td>{{ object.subclass }}</td>
+                </tr>
+                <tr>
+                    <th>Бүтээлийн товч</th>
+                    <td>{{ object.overview }}</td>
+                </tr>
+                <tr>
+                    <th>Түлхүүр үг</th>
+                    <td>{{ object.keyword }}</td>
+                </tr>
+                <tr>
+                    <th>Бүтээл бичигдсэн огноо</th>
+                    <td>{{ object.created_date }}</td>
+                </tr>
+                <tr>
+                    <th>Хуудасны тоо</th>
+                    <td>{{ object.num_of_page }}</td>
+                </tr>
+                <tr>
+                    <th>Хэл</th>
+                    <td>{{ object.get_language_display }}</td>
+                </tr>
+                <tr>
+                    <th>Үнэ</th>
+                    {% if object.is_paid %}
+                    <td><span class="badge badge-success">{{ object.price }} Төгрөг </span>
+                        {% else %}
+                    <td><span class="badge badge-success">Үнэгүй</span></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Бүтээл</th>
+                    {% if object.is_paid %}
+                        <td><a href="{% url 'download_page' object.id %}" class="btn btn-success">Худалдаж авах</a></td>
+                    {% else %}
+                        <td><a href="{% url 'download_page' object.id %}" class="btn btn-success">Татах</a></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Байршуулсан огноо</th>
+                    <td>{{ object.uploaded_date }}</td>
+                </tr>
+                <tr>
+                    <th>Товч мэдээлэл үзсэн</th>
+                    <td>{{ views }}</td>
+                </tr>
+                <tr>
+                    <th>Татаж авсан</th>
+                    <td>{{ object.total_downloads }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

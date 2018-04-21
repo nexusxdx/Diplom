@@ -1,0 +1,96 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Төлбөр төлөх {% endblock %}
+
+{% block content %}
+<div class="maintain">
+    <div class="container">
+
+        <div class="section-payment">
+            <div class="payment-wrap">
+                <div class="sub-heading">
+                    <h4>Бүтээлийн мэдээлэл</h4>
+                </div>
+
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Бүтээлийн нэр</th>
+                            <th>Зохиогч</th>
+                            <th>Хэл</th>
+                            <th>Үнэ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ object.title }}</td>
+                            <td>{{ object.author.get_short_name }}</td>
+                            <td>{{ object.get_language_display }}</td>
+                            <td>{{ object.price }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="sub-card-total text-right">
+                    <h3>Нийт Төлбөр: <span style="font-size: 26px;">{{ object.price }}</span></h3>
+                </div>
+            </div>
+
+            <div class="payment-wrap">
+                <div class="sub-heading">
+                    <h4>Төлбөрийн мэдээлэл</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Төлбөрийн төрөл</p>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="radio" name="radio" class="custom-control-input" checked="true">
+                            <label class="custom-control-label" for="radio">Карт</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="radio2" name="radio" class="custom-control-input">
+                            <label class="custom-control-label" for="radio2">Qpay</label>
+                        </div>
+
+
+                        <div class="row" style="margin-top: 20px">
+                            <div class="form-group col-md-8">
+                                <label for="bank_selection">Банк</label>
+                                <select name="" id="bank_selection" class="form-control">
+                                    <option selected>Сонгоно уу</option>
+                                    <option>Худалдаа Хөгжлийн банк</option>
+                                    <option>Ариг банк</option>
+                                    <option>Голомт банк</option>
+                                    <option>Капитрон банк</option>
+                                    <option>Төрийн банк</option>
+                                    <option>Улаанбаатар Хотын банк</option>
+                                    <option>Үндэсний Хөрөнгө Оруулалтын банк</option>
+                                    <option>Хаан банк</option>
+                                    <option>Хас банк</option>
+                                    <option>Чингис хаан банк</option>
+                                    <option>Most money</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="sub-card-total text-right">
+                    <a href="https://www.khanbank.com" class="btn btn-success">
+                        <i class="fa fa-long-arrow-right"></i>
+                        Төлбөр төлөх
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

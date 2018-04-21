@@ -1,0 +1,27 @@
+Author
+    - First Name
+    - Last Name
+    - profession
+    - graduated_school
+    - rank
+    - about
+
+Creation
+    - author (ForeignKey)
+    - Title
+    - co-authors
+    - type
+    - category
+    - subclass
+    - overview
+    - keyword
+    - created_date
+    - language
+    - price
+    - file
+    - num_of_page
+    - uploaded_date
+    - count_overview
+    - num_of_downloads
+
+
